@@ -1,0 +1,219 @@
+Introduction to golang
+Highlights of go features
+
+9:28 23 Jun 2016
+Tags: golang, gopher
+
+
+Shruti Ranade
+Software Engineer, Cisco Systems
+shranade@cisco.com
+http://shrutiranade.blogspot.in
+@simpsade
+
+* THAT FEELING
+
+.image images/meme3.jpg 500 600
+
+* GOING GO!!
+
+Not really "A One True Way"
+
+*INTRODUCTION*
+Types
+Variables Declaration
+Structs
+Functions
+Arrays, Slices, Maps and Pointers
+
+*OBJECT* *ORIENTED* *DEVELOPMENT*
+Methods
+Interfaces
+Embedding
+Composition
+
+*CONCURRENCY*
+Go Routines
+Channels
+Select
+Garbage Collectors
+Defer, Panick, Recover
+
+.image images/gopher.png 500 400
+
+* TRYING TO MAKE THIS LESS BORING
+
+_Learning_go_by_example_
+_One_Program_That_Explains_It_All_
+
+
+* HELLO WORLD
+
+- All go files must list which package it is part of.
+- Programs start running in package main.
+- Exported names are always in capital. (Println.. and not println)
+
+.play helloworld.go
+
+* BASIC TYPES
+
+.play types.go
+
+* VARIABLE DECLARATION
+
+var <varibale_name> <variable_type>
+Variable Initializers
+Short variable declarations
+
+.play variables.go
+
+* TYPES CONTINUED
+
+- Zero values : Every variable without explicit initialization is given it's zero value.
+- Type Convertions :
+  `var i int = 42`
+  `var f float = float64(i)`
+- Type Inference : When not explicitly specified, the type becomes the value on it's right hand side.
+- Constants:
+  `const Pi = 3.14`
+
+* STRUCT
+
+A type that contains a collection of named fields.
+
+.play struct.go
+
+* FUNCTIONS/METHODS
+
+Functionality of functions is the same!
+
+.play functions.go
+
+* ARRAYS
+
+.play arrays.go
+
+* SLICES
+
+- A slice describes a piece of an array.
+- If you want to learn Go, you gotta learn how to use slices.
+- Highly important data structures in Go.
+- Dynamic arrays with special and builtin functionalities.
+- Slice length and Slice capacity.
+- Function append, to help grow the slices.
+- You see slices more often in Go code than you see arrays.
+- A slice header contains a pointer (pointing to the array). But a slice is a value in itself.
+  This information is important for when you are passing slices as arguments to functions.
+- Pass by value and Pass by reference in slices.
+
+* SLICES EXAMPLE 1
+
+.play slices1.go
+
+* SLICES APPEND EXAMPLE 2
+
+.play slices2.go
+
+* SLICES & VARIADIC FUCNTIONS
+
+- Variadic functions : The functions that can be called with any number of trailing arguments
+
+.play slices3.go
+
+* MAPS map[keyType]valueType
+
+- Go provides a builtin map type that implements a hash table.
+- Keys can be only of comparable type.
+- Maps are not safe concurrent use. In cases where atomic map updates are required, an explicit synchronization mechanism to be used.
+- When iterating over map, the order is randomized across different runs.
+
+* MAPS EXAMPLE
+
+.play maps.go
+
+* POINTERS
+
+.image images/meme5.jpg
+
+* CONCURRENCY
+
+SUCH IS LIFE
+
+* CONCURRENCY IS NOT PARALLELISM
+
+- The world is parallel. Everything happens simultaneously.
+- Go is a concurrent language. Ability to run things concurrently.
+- "Concurrency is about structure. Parallelism is about execution" - Rob Pike
+
+.image images/meme6.jpg
+
+* CONCURRENCY vs PARALLELISM
+
+- Concurrency : A composition of independently executing processes which are related.
+- Parallelism : Simultaneous execution of multiple things (possibly related)
+
+- Concurrency : Dealing with lot of things at once.
+- Parallelism : Doing a lot of things at once.
+
+- Concurrency : Is about structure
+- Parallelism : Is about execution.
+
+* CONCURRENCY
+
+- Concurrency : An OS with mouse driver, keyboard driver, display driver etc managed by OS as independent things inside kernel. These are concurrent things which are not necessarily parallel.
+- Parallel : A vector dot product. Break down into microscopic operations and feed into a multicore processor to run in parallel.
+
+- Concurrency is a way you structure your program so that you can use parallelism to do a better job.
+
+- Go model of concurrency is based on the paper by C.A.R Hoare: Communicating Sequential Processes.
+
+* GO ROUTINES
+
+- A go routine is a function running independently in the same address space as other goroutines.
+- Go routines are not threads
+- Created and scheduled to be run independently
+- Multiplexed against a shared thread owned by a context.
+- The scheduler uses a context that owns an OS thread and goroutine run queue.
+
+* GO ROUTINE SCHEDULER
+
+.image images/goroutine.png 500 700
+
+* GO ROUTINES (Example 1)
+
+.play goroutine1.go
+
+* GO ROUTINES (Example 2)
+
+.play goroutine3.go
+
+* CHANNELS
+
+- Channel method is the main method of synchronization between goroutines.
+- A send on a channel happens before the corresponding receive from thar channel completes.
+- Type safe message queues
+- Buffered Channels : A channel created with no capacity.
+- Unbuffered Channels : A channel created with an initial capacity.
+
+* UNBUFFERED CHANNELS
+
+.image images/unbuffered.png
+
+* BUFFERED CHANNELS
+
+.image images/buffered.png
+
+* CHANNELS (Example 1)
+
+.play channels.go
+
+* QUESTIONS
+
+* RESOURCES FOR GO
+
+- https://www.golang-book.com/books/intro
+- https://www.youtube.com/watch?v=cN_DpYBzKso
+- https://blog.golang.org/
+- https://www.goinggo.net/
+- https://www.youtube.com/watch?v=VoS7DsT1rdM&list=PLE7tQUdRKcyb-k4TMNm2K59-sVlUJumw7
+- https://github.com/ardanlabs/gotraining
